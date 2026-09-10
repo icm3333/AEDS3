@@ -105,12 +105,10 @@ public class VisaoPerguntas {
     }
 
     private void alterar() {
-        // TODO: implementar
         System.out.println("[Em desenvolvimento] Alteração de perguntas.");
     }
 
     private void arquivar() {
-        // TODO: implementar
         System.out.println("[Em desenvolvimento] Arquivamento de perguntas.");
     }
 }

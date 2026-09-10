@@ -45,31 +45,26 @@ public class ControleUsuario {
     }
 
     public boolean validarRespostaSecreta(String email, String resposta) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("validarRespostaSecreta não implementado.");
     }
 
     /** Altera o nome do usuário ativo. */
     public boolean alterarNome(String novoNome) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("alterarNome não implementado.");
     }
 
     /** Altera o email do usuário ativo (valida unicidade via ArquivoUsuario). */
     public boolean alterarEmail(String novoEmail) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("alterarEmail não implementado.");
     }
 
     /** Altera a senha do usuário ativo. */
     public boolean alterarSenha(String novaSenha) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("alterarSenha não implementado.");
     }
 
     /** Altera a pergunta e resposta secreta do usuário ativo. */
     public boolean alterarPerguntaSecreta(String novaPergunta, String novaResposta) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("alterarPerguntaSecreta não implementado.");
     }
 

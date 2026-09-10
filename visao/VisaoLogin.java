@@ -51,7 +51,6 @@ public class VisaoLogin {
                 System.out.println("(R) Recuperar senha   (qualquer tecla) Tentar novamente");
                 String resp = scanner.nextLine().trim().toUpperCase();
                 if (resp.equals("R")) {
-                    // TODO: chamar tela de recuperação de senha
                     System.out.println("[Em desenvolvimento] Recuperação de senha.");
                 }
                 return false;

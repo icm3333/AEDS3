@@ -24,12 +24,10 @@ public class ControlePergunta {
     }
 
     public boolean alterar(int idPergunta, String novoTexto, String novasPalavrasChave) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("alterar() não implementado.");
     }
 
     public boolean arquivar(int idPergunta, int idUsuarioAtivo) throws Exception {
-        // TODO: implementar
         throw new UnsupportedOperationException("arquivar() não implementado.");
     }
 

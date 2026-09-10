@@ -60,7 +60,6 @@ public class ArquivoUsuario extends Arquivo<Usuario> {
 
         indiceEmail.delete(ParEmailId.hash(usuario.getEmail()));
 
-        // TODO: deletar todas as perguntas do usuário antes de deletá-lo
 
         return super.delete(id);
     }
