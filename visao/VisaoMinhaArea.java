@@ -4,17 +4,6 @@ import controle.ControleUsuario;
 import controle.ControlePergunta;
 import java.util.Scanner;
 
-/**
- * Tela "Minha Área".
- *
- * =========================================================================
- * IMPLEMENTADO:
- *  - Estrutura do menu
- *
- * TODO para o grupo:
- *  - Implementar VisaoMeusDados e VisaoPerguntas e conectá-las aqui
- * =========================================================================
- */
 public class VisaoMinhaArea {
 
     private final Scanner          scanner;
@@ -27,8 +16,6 @@ public class VisaoMinhaArea {
         this.controleUsuario  = controleUsuario;
         this.controlePergunta = controlePergunta;
     }
-
-    // =========================================================================
 
     public void exibir() {
         while (true) {

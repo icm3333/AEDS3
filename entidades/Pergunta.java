@@ -6,28 +6,17 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
-/**
- * Entidade que representa uma pergunta do sistema Ajuda Aí.
- * Implementa InterfaceRegistro para ser armazenada no arquivo binário genérico.
- *
- * Perguntas nunca são excluídas — apenas arquivadas (ativa = false).
- */
 public class Pergunta implements InterfaceRegistro {
 
     private int     id;
     private int     idUsuario;
-    private long    criacao;      // milissegundos desde epoch
-    private long    alteracao;    // milissegundos desde epoch
-    private short   nota;         // soma dos votos (pode ser negativa)
-    private String  pergunta;     // texto completo
+    private long    criacao;       // milissegundos desde epoch
+    private long    alteracao;     // milissegundos desde epoch
+    private short   nota;          // soma dos votos (pode ser negativa)
+    private String  pergunta;
     private String  palavrasChave; // termos separados por ";"
     private boolean ativa;
 
-    // -------------------------------------------------------------------------
-    // Construtores
-    // -------------------------------------------------------------------------
-
-    /** Construtor padrão exigido pelo Arquivo genérico (reflexão). */
     public Pergunta() {
         this(-1, -1, 0L, 0L, (short) 0, "", "", true);
     }
@@ -43,10 +32,6 @@ public class Pergunta implements InterfaceRegistro {
         this.palavrasChave = palavrasChave;
         this.ativa        = ativa;
     }
-
-    // -------------------------------------------------------------------------
-    // Getters e Setters
-    // -------------------------------------------------------------------------
 
     @Override public int  getId()         { return id; }
     @Override public void setId(int id)   { this.id = id; }
@@ -71,10 +56,6 @@ public class Pergunta implements InterfaceRegistro {
 
     public boolean isAtiva()                      { return ativa; }
     public void    setAtiva(boolean ativa)        { this.ativa = ativa; }
-
-    // -------------------------------------------------------------------------
-    // Serialização / Desserialização
-    // -------------------------------------------------------------------------
 
     @Override
     public byte[] serialize() throws Exception {
@@ -107,8 +88,6 @@ public class Pergunta implements InterfaceRegistro {
         palavrasChave = dis.readUTF();
         ativa         = dis.readBoolean();
     }
-
-    // -------------------------------------------------------------------------
 
     @Override
     public String toString() {

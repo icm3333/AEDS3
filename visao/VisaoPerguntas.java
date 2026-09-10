@@ -10,19 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Tela de gerenciamento das perguntas do usuário logado.
- *
- * =========================================================================
- * IMPLEMENTADO:
- *  - Listagem de perguntas (A)
- *  - Inclusão de pergunta (B)
- *
- * TODO para o grupo:
- *  - Alteração de pergunta (C)  → controlePergunta.alterar()
- *  - Arquivamento de pergunta (D) → controlePergunta.arquivar()
- * =========================================================================
- */
 public class VisaoPerguntas {
 
     private final Scanner          scanner;
@@ -38,8 +25,6 @@ public class VisaoPerguntas {
         this.controleUsuario  = controleUsuario;
         this.controlePergunta = controlePergunta;
     }
-
-    // =========================================================================
 
     public void exibir() {
         while (true) {
@@ -67,14 +52,7 @@ public class VisaoPerguntas {
         }
     }
 
-    // =========================================================================
-    // LISTAR
-    // =========================================================================
-
-    /**
-     * Lista as perguntas do usuário logado e retorna o array de perguntas
-     * (necessário para a seleção em alterar/arquivar).
-     */
+    // retorna a lista para ser reutilizada em alterar/arquivar
     private ArrayList<Pergunta> listar() {
         int idUsuario = controleUsuario.getUsuarioAtivo().getId();
         try {
@@ -110,10 +88,6 @@ public class VisaoPerguntas {
         }
     }
 
-    // =========================================================================
-    // INCLUIR
-    // =========================================================================
-
     private void incluir() {
         System.out.println("\n--- NOVA PERGUNTA ---");
         System.out.print("Pergunta: ");
@@ -130,32 +104,10 @@ public class VisaoPerguntas {
         }
     }
 
-    // =========================================================================
-    // ALTERAR
-    //
-    // TODO: Implementar este método.
-    // Passos:
-    //  1. Listar as perguntas (reutilize listar())
-    //  2. Pedir o número sequencial que o usuário quer alterar
-    //  3. Pedir os novos dados (texto e palavras-chave)
-    //  4. Chamar controlePergunta.alterar(idPergunta, novoTexto, novasPalavras)
-    // =========================================================================
-
     private void alterar() {
         // TODO: implementar
         System.out.println("[Em desenvolvimento] Alteração de perguntas.");
     }
-
-    // =========================================================================
-    // ARQUIVAR
-    //
-    // TODO: Implementar este método.
-    // Passos:
-    //  1. Listar as perguntas (reutilize listar())
-    //  2. Pedir o número sequencial que o usuário quer arquivar
-    //  3. Confirmar a operação (é definitiva!)
-    //  4. Chamar controlePergunta.arquivar(idPergunta, idUsuarioAtivo)
-    // =========================================================================
 
     private void arquivar() {
         // TODO: implementar

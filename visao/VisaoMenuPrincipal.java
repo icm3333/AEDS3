@@ -4,18 +4,6 @@ import controle.ControleUsuario;
 import controle.ControlePergunta;
 import java.util.Scanner;
 
-/**
- * Menu principal pós-login.
- *
- * =========================================================================
- * IMPLEMENTADO:
- *  - Estrutura do menu
- *  - Acesso à Minha Área
- *
- * TODO para o grupo:
- *  - Opção (B) Buscar perguntas (será implementada no TP2)
- * =========================================================================
- */
 public class VisaoMenuPrincipal {
 
     private final Scanner          scanner;
@@ -28,8 +16,6 @@ public class VisaoMenuPrincipal {
         this.controleUsuario  = controleUsuario;
         this.controlePergunta = controlePergunta;
     }
-
-    // =========================================================================
 
     public void exibir() {
         while (true) {

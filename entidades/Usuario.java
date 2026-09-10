@@ -7,10 +7,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.text.Normalizer;
 
-/**
- * Entidade que representa um usuário do sistema Ajuda Aí.
- * Implementa InterfaceRegistro para ser armazenada no arquivo binário genérico.
- */
 public class Usuario implements InterfaceRegistro {
 
     private int    id;
@@ -20,11 +16,6 @@ public class Usuario implements InterfaceRegistro {
     private String perguntaSecreta;
     private int    hashRespostaSecreta;
 
-    // -------------------------------------------------------------------------
-    // Construtores
-    // -------------------------------------------------------------------------
-
-    /** Construtor padrão exigido pelo Arquivo genérico (reflexão). */
     public Usuario() {
         this(-1, "", "", 0, "", 0);
     }
@@ -38,10 +29,6 @@ public class Usuario implements InterfaceRegistro {
         this.perguntaSecreta     = perguntaSecreta;
         this.hashRespostaSecreta = hashRespostaSecreta;
     }
-
-    // -------------------------------------------------------------------------
-    // Getters e Setters
-    // -------------------------------------------------------------------------
 
     @Override public int    getId()    { return id; }
     @Override public void   setId(int id) { this.id = id; }
@@ -61,22 +48,12 @@ public class Usuario implements InterfaceRegistro {
     public int  getHashRespostaSecreta()                       { return hashRespostaSecreta; }
     public void setHashRespostaSecreta(int hashRespostaSecreta){ this.hashRespostaSecreta = hashRespostaSecreta; }
 
-    // -------------------------------------------------------------------------
-    // Utilitários de hash — mesma convenção do professor (Math.abs + hashCode)
-    // -------------------------------------------------------------------------
-
-    /**
-     * Retorna o hash inteiro de uma senha.
-     * Nunca armazenar a senha em texto puro.
-     */
+    // nunca armazenar a senha em texto puro
     public static int hashSenha(String senha) {
         return Math.abs(senha.hashCode());
     }
 
-    /**
-     * Normaliza a resposta secreta (remove acentos, minúsculas, sem espaços extras)
-     * e retorna seu hash.
-     */
+    // hash sem acento, minúsculo, sem espaços extras
     public static int hashResposta(String resposta) {
         String normalizada = Normalizer.normalize(resposta, Normalizer.Form.NFD)
                 .replaceAll("[^\\p{ASCII}]", "")
@@ -84,10 +61,6 @@ public class Usuario implements InterfaceRegistro {
                 .trim();
         return Math.abs(normalizada.hashCode());
     }
-
-    // -------------------------------------------------------------------------
-    // Serialização / Desserialização
-    // -------------------------------------------------------------------------
 
     @Override
     public byte[] serialize() throws Exception {
@@ -116,8 +89,6 @@ public class Usuario implements InterfaceRegistro {
         perguntaSecreta     = dis.readUTF();
         hashRespostaSecreta = dis.readInt();
     }
-
-    // -------------------------------------------------------------------------
 
     @Override
     public String toString() {

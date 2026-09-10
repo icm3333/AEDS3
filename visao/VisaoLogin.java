@@ -3,19 +3,6 @@ package visao;
 import controle.ControleUsuario;
 import java.util.Scanner;
 
-/**
- * Tela de Login e Cadastro de novo usuário.
- *
- * =========================================================================
- * IMPLEMENTADO:
- *  - Menu inicial (login / novo usuário / sair)
- *  - Fluxo de login com mensagem de erro genérica
- *  - Fluxo de cadastro com validação de email
- *
- * TODO para o grupo:
- *  - Fluxo de recuperação de senha (opção apresentada após login falho)
- * =========================================================================
- */
 public class VisaoLogin {
 
     private final Scanner        scanner;
@@ -26,14 +13,6 @@ public class VisaoLogin {
         this.controle = controle;
     }
 
-    // =========================================================================
-    // MENU INICIAL
-    // =========================================================================
-
-    /**
-     * Exibe o menu de acesso e retorna true se o usuário fizer login com sucesso.
-     * Retorna false quando o usuário escolher sair.
-     */
     public boolean exibir() {
         while (true) {
             System.out.println("\n============================");
@@ -54,10 +33,6 @@ public class VisaoLogin {
             }
         }
     }
-
-    // =========================================================================
-    // LOGIN
-    // =========================================================================
 
     private boolean telaLogin() {
         System.out.println("\n--- LOGIN ---");
@@ -87,20 +62,14 @@ public class VisaoLogin {
         }
     }
 
-    // =========================================================================
-    // CADASTRO
-    // =========================================================================
-
     private void telaCadastro() {
         System.out.println("\n--- NOVO USUÁRIO ---");
         System.out.print("Email: ");
         String email = scanner.nextLine().trim();
 
         try {
-            // Verifica antecipadamente se o email já existe
             if (controle.getUsuarioAtivo() == null) {
-                // Tenta uma leitura para checar duplicidade antes de pedir os demais dados
-                // (ArquivoUsuario.create() também valida, mas é melhor dar feedback cedo)
+                // ArquivoUsuario.create() valida duplicidade; feedback de email virá lá
             }
 
             System.out.print("Nome completo: ");

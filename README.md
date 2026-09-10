@@ -1,8 +1,9 @@
 # Ajuda Aí 1.0 — TP1 AEDS III
 
-Sistema de perguntas e respostas inspirado no StackOverflow, desenvolvido como trabalho prático da disciplina **Algoritmos e Estruturas de Dados III** — PUC Minas.
+Sistema de perguntas e respostas inspirado no StackOverflow.  
+Disciplina: Algoritmos e Estruturas de Dados III — PUC Minas.
 
-## 👥 Grupo
+## Grupo
 
 | Nome | GitHub |
 |---|---|
@@ -13,44 +14,10 @@ Sistema de perguntas e respostas inspirado no StackOverflow, desenvolvido como t
 
 ---
 
-## 📁 Estrutura do Projeto
-
-```
-TP1-AEDS3/
-│
-├── aed3/                  ← Código base do professor (não modificar)
-│   ├── Arquivo.java
-│   ├── ArvoreBMais.java
-│   ├── HashExtensivel.java
-│   └── ...
-│
-├── entidades/             ← Entidades e seus CRUDs
-│   ├── Usuario.java
-│   ├── Pergunta.java
-│   ├── ParEmailId.java
-│   ├── ArquivoUsuario.java
-│   └── ArquivoPergunta.java
-│
-├── controle/              ← Lógica de negócio (sem prints de tela)
-│   ├── ControleUsuario.java
-│   └── ControlePergunta.java
-│
-├── visao/                 ← Telas do terminal (MVC — View)
-│   ├── VisaoLogin.java
-│   ├── VisaoMenuPrincipal.java
-│   ├── VisaoMinhaArea.java
-│   ├── VisaoMeusDados.java
-│   └── VisaoPerguntas.java
-│
-└── Principal.java         ← main()
-```
-
----
-
-## ▶️ Como compilar e executar
+## Como compilar e executar
 
 ```bash
-# Compilar todos os arquivos Java a partir da raiz do projeto
+# Compilar
 javac -encoding UTF-8 aed3/*.java entidades/*.java controle/*.java visao/*.java Principal.java
 
 # Executar
@@ -59,54 +26,46 @@ java Principal
 
 ---
 
-## ✅ O que está implementado
+## Estrutura do projeto
 
-| Funcionalidade | Status |
-|---|---|
-| Cadastro de novo usuário | ✅ |
-| Login com email e senha | ✅ |
-| Índice Hash Extensível por email | ✅ |
-| Criar nova pergunta | ✅ |
-| Listar perguntas do usuário | ✅ |
-| Árvore B+ com relação usuário→perguntas | ✅ |
-| Alterar dados do usuário | 🔧 Em desenvolvimento |
-| Recuperação de senha | 🔧 Em desenvolvimento |
-| Alterar pergunta | 🔧 Em desenvolvimento |
-| Arquivar pergunta | 🔧 Em desenvolvimento |
-| Exclusão em cascata ao deletar usuário | 🔧 Em desenvolvimento |
+```
+TP1-AEDS3/
+├── aed3/              → código base do professor (não modificar)
+├── entidades/         → entidades e CRUDs
+├── controle/          → lógica de negócio
+├── visao/             → telas do terminal
+└── Principal.java     → ponto de entrada
+```
 
 ---
 
-## 🔧 TODOs abertos para o grupo
+## O que está pronto
 
-Busque por `// TODO` no código para encontrar todos os pontos a implementar:
-
-- **`ControleUsuario.java`**: `alterarNome()`, `alterarEmail()`, `alterarSenha()`, `alterarPerguntaSecreta()`, `validarRespostaSecreta()`
-- **`ControlePergunta.java`**: `alterar()`, `arquivar()`
-- **`ArquivoUsuario.java`**: exclusão em cascata no `delete()`
-- **`ArquivoPergunta.java`**: `deleteAllByUsuario()`
-- **`VisaoMeusDados.java`**: conectar cada opção ao controle
-- **`VisaoPerguntas.java`**: `alterar()` e `arquivar()` (fluxo de tela)
-- **`VisaoLogin.java`**: tela de recuperação de senha
+- Cadastro de novo usuário
+- Login com email e senha
+- Índice Hash Extensível por email (busca direta sem varredura)
+- Estrutura de menus completa (login, menu principal, minha área)
+- Criar nova pergunta vinculada ao usuário logado
+- Listar perguntas do usuário via Árvore B+
 
 ---
 
-## 📋 Checklist do Enunciado
+## O que ainda precisa ser implementado
 
-- [ ] Há um CRUD de usuários com Tabela Hash Extensível (índice por email)?
-- [ ] Há um CRUD de perguntas com Árvore B+ (relacionamento 1:N)?
-- [ ] As perguntas estão vinculadas aos usuários via `idUsuario`?
-- [ ] Há uma Árvore B+ com o par `(idUsuario, idPergunta)`?
-- [ ] O trabalho compila corretamente?
-- [ ] O trabalho está completo e funcionando sem erros?
-- [ ] O trabalho é original?
+- Alterar nome, email, senha e pergunta de recuperação do usuário
+- Recuperação de senha via pergunta secreta
+- Alterar texto e palavras-chave de uma pergunta
+- Arquivar pergunta (exclusão lógica definitiva)
+- Exclusão em cascata das perguntas ao deletar um usuário
 
 ---
 
-## 🏗️ Decisões de Arquitetura
+## Checklist do enunciado
 
-- **Padrão MVC**: separação clara entre `entidades/` (Model), `visao/` (View) e `controle/` (Controller).
-- **Hash de senha**: usamos `Math.abs(String.hashCode())`, seguindo o padrão adotado pelo professor no código base.
-- **Resposta secreta**: normalizada (sem acentos, minúsculas) antes do hash, conforme o enunciado.
-- **Arquivamento**: perguntas nunca são excluídas fisicamente — apenas o atributo `ativa` é alterado para `false`.
-- **Código base (`aed3/`)**: os arquivos do professor **não foram modificados**.
+- [ ] CRUD de usuários com Hash Extensível por email
+- [ ] CRUD de perguntas com Árvore B+
+- [ ] Perguntas vinculadas ao usuário via `idUsuario`
+- [ ] Árvore B+ com par `(idUsuario, idPergunta)`
+- [ ] Compila sem erros
+- [ ] Funciona sem erros de execução
+- [ ] Trabalho original

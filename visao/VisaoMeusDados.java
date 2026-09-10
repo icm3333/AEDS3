@@ -3,18 +3,6 @@ package visao;
 import controle.ControleUsuario;
 import java.util.Scanner;
 
-/**
- * Tela de gerenciamento dos dados do usuário logado.
- *
- * =========================================================================
- * TODO para o grupo: Implementar todas as opções deste menu.
- *
- * (A) Alterar nome            → controleUsuario.alterarNome()
- * (B) Alterar email           → controleUsuario.alterarEmail()
- * (C) Alterar senha           → controleUsuario.alterarSenha()
- * (D) Alterar pergunta/resp.  → controleUsuario.alterarPerguntaSecreta()
- * =========================================================================
- */
 public class VisaoMeusDados {
 
     private final Scanner        scanner;
@@ -24,8 +12,6 @@ public class VisaoMeusDados {
         this.scanner  = scanner;
         this.controle = controle;
     }
-
-    // =========================================================================
 
     public void exibir() {
         while (true) {
@@ -52,10 +38,6 @@ public class VisaoMeusDados {
             }
         }
     }
-
-    // =========================================================================
-    // TODO: Implementar cada método abaixo.
-    // =========================================================================
 
     private void alterarNome() {
         // TODO
