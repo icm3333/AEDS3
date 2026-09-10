@@ -40,6 +40,7 @@ public class VisaoMeusDados {
     }
 
     private void alterarNome() {
+        // implementar
         System.out.print("Novo nome: ");
         String novoNome = scanner.nextLine().trim();
         try {
@@ -53,6 +54,7 @@ public class VisaoMeusDados {
     }
 
     private void alterarEmail() {
+        // implementar
         System.out.print("Novo email: ");
         String novoEmail = scanner.nextLine().trim();
         try {
@@ -66,6 +68,7 @@ public class VisaoMeusDados {
     }
 
     private void alterarSenha() {
+        // implementar
         System.out.print("Nova senha: ");
         String novaSenha = scanner.nextLine().trim();
         try {
@@ -79,6 +82,7 @@ public class VisaoMeusDados {
     }
 
     private void alterarPerguntaSecreta() {
+        // implementar
         System.out.print("Nova pergunta de recuperação: ");
         String pergunta = scanner.nextLine().trim();
         System.out.print("Nova resposta: ");

@@ -54,6 +54,7 @@ public class ArquivoPergunta extends Arquivo<Pergunta> {
     }
 
     public void deleteAllByUsuario(int idUsuario) throws Exception {
+        // implementar
         throw new UnsupportedOperationException("deleteAllByUsuario não implementado ainda.");
     }
 
