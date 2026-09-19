@@ -105,12 +105,56 @@ public class VisaoPerguntas {
     }
 
     private void alterar() {
-        // implementar
-        System.out.println("[Em desenvolvimento] Alteração de perguntas.");
+        ArrayList<Pergunta> perguntas = listar();
+        if (perguntas.isEmpty()) return;
+
+        System.out.print("Número da pergunta a alterar (0 para cancelar): ");
+        int num;
+        try { num = Integer.parseInt(scanner.nextLine().trim()); }
+        catch (NumberFormatException e) { System.out.println("Número inválido."); return; }
+        if (num <= 0 || num > perguntas.size()) return;
+
+        Pergunta p = perguntas.get(num - 1);
+        if (!p.isAtiva()) { System.out.println("Pergunta arquivada não pode ser alterada."); return; }
+
+        System.out.print("Novo texto (ENTER para manter): ");
+        String novoTexto = scanner.nextLine().trim();
+        if (novoTexto.isEmpty()) novoTexto = p.getPergunta();
+
+        System.out.print("Novas palavras-chave (ENTER para manter): ");
+        String novasPalavras = scanner.nextLine().trim();
+        if (novasPalavras.isEmpty()) novasPalavras = p.getPalavrasChave();
+
+        try {
+            boolean ok = controlePergunta.alterar(p.getId(), novoTexto, novasPalavras);
+            System.out.println(ok ? "Pergunta alterada com sucesso." : "Falha ao alterar.");
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
 
     private void arquivar() {
-        // implementar
-        System.out.println("[Em desenvolvimento] Arquivamento de perguntas.");
+        ArrayList<Pergunta> perguntas = listar();
+        if (perguntas.isEmpty()) return;
+
+        System.out.print("Número da pergunta a arquivar (0 para cancelar): ");
+        int num;
+        try { num = Integer.parseInt(scanner.nextLine().trim()); }
+        catch (NumberFormatException e) { System.out.println("Número inválido."); return; }
+        if (num <= 0 || num > perguntas.size()) return;
+
+        Pergunta p = perguntas.get(num - 1);
+        if (!p.isAtiva()) { System.out.println("Pergunta já arquivada."); return; }
+
+        System.out.print("Confirma arquivamento? (S/N): ");
+        if (!scanner.nextLine().trim().equalsIgnoreCase("S")) return;
+
+        try {
+            int idUsuario = controleUsuario.getUsuarioAtivo().getId();
+            boolean ok = controlePergunta.arquivar(p.getId(), idUsuario);
+            System.out.println(ok ? "Pergunta arquivada." : "Falha ao arquivar.");
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
 }

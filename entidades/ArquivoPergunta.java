@@ -54,8 +54,11 @@ public class ArquivoPergunta extends Arquivo<Pergunta> {
     }
 
     public void deleteAllByUsuario(int idUsuario) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("deleteAllByUsuario não implementado ainda.");
+        ArrayList<ParIdId> pares = relUsuarioPergunta.read(new ParIdId(idUsuario, -1));
+        for (ParIdId par : pares) {
+            super.delete(par.getId2());
+            relUsuarioPergunta.delete(par);
+        }
     }
 
     @Override

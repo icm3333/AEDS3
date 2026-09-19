@@ -45,32 +45,39 @@ public class ControleUsuario {
     }
 
     public boolean validarRespostaSecreta(String email, String resposta) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("validarRespostaSecreta não implementado.");
+        Usuario usuario = arqUsuario.readByEmail(email);
+        if (usuario == null) return false;
+        return usuario.getHashRespostaSecreta() == Usuario.hashResposta(resposta);
     }
 
-    /** Altera o nome do usuário ativo. */
     public boolean alterarNome(String novoNome) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("alterarNome não implementado.");
+        usuarioAtivo.setNome(novoNome);
+        boolean ok = arqUsuario.update(usuarioAtivo);
+        if (!ok) usuarioAtivo = arqUsuario.read(usuarioAtivo.getId()); // reverte em memória
+        return ok;
     }
 
-    /** Altera o email do usuário ativo (valida unicidade via ArquivoUsuario). */
+    // ArquivoUsuario.update() já cuida de reindexar o Hash se o email mudar
     public boolean alterarEmail(String novoEmail) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("alterarEmail não implementado.");
+        usuarioAtivo.setEmail(novoEmail);
+        boolean ok = arqUsuario.update(usuarioAtivo);
+        if (!ok) usuarioAtivo = arqUsuario.read(usuarioAtivo.getId());
+        return ok;
     }
 
-    /** Altera a senha do usuário ativo. */
     public boolean alterarSenha(String novaSenha) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("alterarSenha não implementado.");
+        usuarioAtivo.setHashSenha(Usuario.hashSenha(novaSenha));
+        boolean ok = arqUsuario.update(usuarioAtivo);
+        if (!ok) usuarioAtivo = arqUsuario.read(usuarioAtivo.getId());
+        return ok;
     }
 
-    /** Altera a pergunta e resposta secreta do usuário ativo. */
     public boolean alterarPerguntaSecreta(String novaPergunta, String novaResposta) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("alterarPerguntaSecreta não implementado.");
+        usuarioAtivo.setPerguntaSecreta(novaPergunta);
+        usuarioAtivo.setHashRespostaSecreta(Usuario.hashResposta(novaResposta));
+        boolean ok = arqUsuario.update(usuarioAtivo);
+        if (!ok) usuarioAtivo = arqUsuario.read(usuarioAtivo.getId());
+        return ok;
     }
 
     public void close() throws Exception {

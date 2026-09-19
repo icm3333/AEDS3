@@ -24,13 +24,19 @@ public class ControlePergunta {
     }
 
     public boolean alterar(int idPergunta, String novoTexto, String novasPalavrasChave) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("alterar() não implementado.");
+        Pergunta p = arqPergunta.read(idPergunta);
+        if (p == null || !p.isAtiva()) return false;
+        p.setPergunta(novoTexto);
+        p.setPalavrasChave(novasPalavrasChave);
+        p.setAlteracao(System.currentTimeMillis());
+        return arqPergunta.update(p);
     }
 
     public boolean arquivar(int idPergunta, int idUsuarioAtivo) throws Exception {
-        // implementar
-        throw new UnsupportedOperationException("arquivar() não implementado.");
+        Pergunta p = arqPergunta.read(idPergunta);
+        // impede que outro usuário arquive a pergunta
+        if (p == null || p.getIdUsuario() != idUsuarioAtivo) return false;
+        return arqPergunta.arquivar(idPergunta);
     }
 
     public void close() throws Exception {
