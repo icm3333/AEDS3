@@ -47,25 +47,25 @@ TP1-AEDS3/
 - Estrutura de menus completa (login, menu principal, minha área)
 - Criar nova pergunta vinculada ao usuário logado
 - Listar perguntas do usuário via Árvore B+
+- Alterar nome, email, senha e pergunta de recuperação do usuário
+- Alterar texto e palavras-chave de uma pergunta
+- Arquivar pergunta (exclusão lógica)
+- Exclusão em cascata das perguntas ao deletar um usuário
 
 ---
 
 ## O que ainda precisa ser implementado
 
-- Alterar nome, email, senha e pergunta de recuperação do usuário
-- Recuperação de senha via pergunta secreta
-- Alterar texto e palavras-chave de uma pergunta
-- Arquivar pergunta (exclusão lógica definitiva)
-- Exclusão em cascata das perguntas ao deletar um usuário
+- Tela de recuperação de senha via pergunta secreta (`VisaoLogin`)
 
 ---
 
 ## Checklist do enunciado
 
-- [ ] CRUD de usuários com Hash Extensível por email
-- [ ] CRUD de perguntas com Árvore B+
-- [ ] Perguntas vinculadas ao usuário via `idUsuario`
-- [ ] Árvore B+ com par `(idUsuario, idPergunta)`
-- [ ] Compila sem erros
+- [x] CRUD de usuários com Hash Extensível por email
+- [x] CRUD de perguntas com Árvore B+
+- [x] Perguntas vinculadas ao usuário via `idUsuario`
+- [x] Árvore B+ com par `(idUsuario, idPergunta)`
+- [x] Compila sem erros
 - [ ] Funciona sem erros de execução
-- [ ] Trabalho original
+- [x] Trabalho original
