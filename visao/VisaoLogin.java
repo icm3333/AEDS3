@@ -62,8 +62,9 @@ public class VisaoLogin {
     }
 
     private void telaRecuperarSenha(){
-        System.out.println("\n--- LOGIN ---");
-        System.out.print("Email: ");
+        System.out.println("\n--- RECUPERAÇÃO DE SENHA ---");
+        System.out.print("Email:");
+        System.out.print("\n> ");
         String email = scanner.nextLine().trim();
 
         try{
@@ -72,7 +73,7 @@ public class VisaoLogin {
                 System.out.println("Email nao encontrado");
                 return;
             }
-            System.out.println("Pergunta de recuperacao: "+ pergunta);
+            System.out.println("Pergunta de recuperação: "+ pergunta);
             System.out.print("\n> ");
             String resposta = scanner.nextLine().trim();
 
@@ -80,9 +81,9 @@ public class VisaoLogin {
                 System.out.println("Resposta incorreta.");
                 return;
             }
-            System.out.println("Nova senha \n> ");
+            System.out.println("Nova senha "); System.out.print("\n> ");
             String novaSenha = scanner.nextLine().trim();
-            System.out.println("Confirme a nova senha \n> ");
+            System.out.println("Confirme a nova senha"); System.out.print("\n> ");
             String novaSenhaConfirmacao = scanner.nextLine().trim();
 
             if(novaSenha.isEmpty() || novaSenhaConfirmacao.isEmpty()){
