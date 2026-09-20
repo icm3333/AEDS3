@@ -51,13 +51,53 @@ public class VisaoLogin {
                 System.out.println("(R) Recuperar senha   (qualquer tecla) Tentar novamente");
                 String resp = scanner.nextLine().trim().toUpperCase();
                 if (resp.equals("R")) {
-                    System.out.println("[Em desenvolvimento] Recuperação de senha.");
+                    telaRecuperarSenha();
                 }
                 return false;
             }
         } catch (Exception e) {
             System.out.println("Erro ao realizar login: " + e.getMessage());
             return false;
+        }
+    }
+
+    private void telaRecuperarSenha(){
+        System.out.println("\n--- LOGIN ---");
+        System.out.print("Email: ");
+        String email = scanner.nextLine().trim();
+
+        try{
+            String pergunta = controle.getPerguntaSecretaPorEmail(email);
+            if(pergunta==null){
+                System.out.println("Email nao encontrado");
+                return;
+            }
+            System.out.println("Pergunta de recuperacao: "+ pergunta);
+            System.out.print("\n> ");
+            String resposta = scanner.nextLine().trim();
+
+            if(!controle.validarRespostaSecreta(email, resposta)){
+                System.out.println("Resposta incorreta.");
+                return;
+            }
+            System.out.println("Nova senha \n> ");
+            String novaSenha = scanner.nextLine().trim();
+            System.out.println("Confirme a nova senha \n> ");
+            String novaSenhaConfirmacao = scanner.nextLine().trim();
+
+            if(novaSenha.isEmpty() || novaSenhaConfirmacao.isEmpty()){
+                System.out.println("Senha vazia, tente novamente.");
+                return;
+            }
+            if(!novaSenha.equals(novaSenhaConfirmacao)){
+                System.out.println("As senhas nao sao identicas");
+                return;
+            }
+
+            boolean status = controle.redefinirSenhaPorEmail(email, novaSenha);
+            System.out.println(status ? "Senha redefinida com sucesso" : "Falha ao redefinir a senha.");
+        } catch (Exception e) {
+            System.out.println("Erro ao redefinir senha: " + e.getMessage());
         }
     }
 

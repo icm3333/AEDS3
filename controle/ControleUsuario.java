@@ -80,6 +80,19 @@ public class ControleUsuario {
         return ok;
     }
 
+    public String getPerguntaSecretaPorEmail(String email) throws Exception{
+        Usuario usuario = arqUsuario.readByEmail(email);
+        if(usuario == null) return null;
+        return usuario.getPerguntaSecreta();
+    }
+
+    public boolean redefinirSenhaPorEmail(String email, String novaSenha) throws Exception{
+        Usuario usuario = arqUsuario.readByEmail(email);
+        if(usuario == null) return false;
+        usuario.setHashSenha(Usuario.hashSenha(novaSenha));
+        return arqUsuario.update(usuario);
+    }
+
     public void close() throws Exception {
         arqUsuario.close();
     }
