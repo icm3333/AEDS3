@@ -51,14 +51,12 @@ TP1-AEDS3/
 - Alterar texto e palavras-chave de uma pergunta
 - Arquivar pergunta (exclusão lógica)
 - Exclusão em cascata das perguntas ao deletar um usuário
-
----
-
-## O que ainda precisa ser implementado
-
 - Tela de recuperação de senha via pergunta secreta (`VisaoLogin`)
 
 ---
+<!--
+ ## O que ainda precisa ser implementado
+-->
 
 ## Checklist do enunciado
 
